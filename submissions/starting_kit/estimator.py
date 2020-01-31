@@ -7,6 +7,7 @@ from sklearn.pipeline import make_pipeline
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
 
+
 def fold_time_series(time_point, period, div_period):
     return (time_point -
             (time_point // (period / div_period)) * period / div_period)
@@ -38,6 +39,7 @@ def get_bin_means(X_df, num_bins, band):
 
     return feature_array
 
+
 transformer_r = FunctionTransformer(
     lambda X_df: get_bin_means(X_df, 5, 'r')
 )
@@ -47,21 +49,22 @@ transformer_b = FunctionTransformer(
 )
 
 cols = [
-    'magnitude_b', 
+    'magnitude_b',
     'magnitude_r',
     'period',
-    'asym_b', 
-    'asym_r', 
-    'log_p_not_variable', 
-    'sigma_flux_b', 
-    'sigma_flux_r', 
-    'quality', 
+    'asym_b',
+    'asym_r',
+    'log_p_not_variable',
+    'sigma_flux_b',
+    'sigma_flux_r',
+    'quality',
     'div_period',
 ]
 
+common = ['period', 'div_period']
 transformer = make_column_transformer(
-    (transformer_r, ['period', 'div_period', 'time_points_r', 'light_points_r']),
-    (transformer_b, ['period', 'div_period', 'time_points_b', 'light_points_b']),
+    (transformer_r, common + ['time_points_r', 'light_points_r']),
+    (transformer_b, common + ['time_points_b', 'light_points_b']),
     ('passthrough', cols)
 )
 
@@ -70,6 +73,7 @@ pipe = make_pipeline(
     SimpleImputer(strategy='most_frequent'),
     RandomForestClassifier(max_depth=5, n_estimators=10)
 )
+
 
 def get_estimator():
     return pipe
