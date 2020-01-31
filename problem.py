@@ -13,7 +13,7 @@ Predictions = rw.prediction_types.make_multiclass(
     label_names=_prediction_label_names)
 
 # An object implementing the workflow
-workflow = rw.workflows.FeatureExtractorClassifier()
+workflow = rw.workflows.Estimator()
 
 score_types = [
     rw.score_types.Accuracy(name='acc'),
