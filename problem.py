@@ -39,7 +39,7 @@ def merge_two_dicts(x, y):
 
 def _read_data(path, df_filename, vf_filename):
     df = pd.read_csv(os.path.join(path, 'data', df_filename), index_col=0)
-    y_array = df[_target_column_name].values
+    y_array = df[_target_column_name].values.astype(int)
     X_dict = df.drop(_target_column_name, axis=1).to_dict(orient='records')
     vf_raw = pd.read_csv(os.path.join(path, 'data', vf_filename),
                          index_col=0, compression='gzip')
