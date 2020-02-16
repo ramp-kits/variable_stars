@@ -45,7 +45,7 @@ for `my_submission`, it should be located in `submissions/my_submission`.
 To run a specific submission, you can use the `ramp-test` command line:
 
 ```bash
-ramp-test --submission my_submissions
+ramp-test --submission my_submission
 ```
 
 You can get more information regarding this command line:
