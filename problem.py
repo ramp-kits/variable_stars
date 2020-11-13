@@ -16,7 +16,7 @@ Predictions = rw.prediction_types.make_multiclass(
 workflow = rw.workflows.Estimator()
 
 score_types = [
-    rw.score_types.Accuracy(name='acc'),
+    rw.score_types.Accuracy(name='acc', precision=4),
 ]
 
 
