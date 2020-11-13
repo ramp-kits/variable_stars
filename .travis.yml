@@ -15,6 +15,6 @@ install:
 script:
     - flake8
     - ramp-test
-    - jupyter nbconvert --execute variable_stars_starting_kit.ipynb --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
+    - jupyter nbconvert --execute variable_stars_starting_kit.ipynb --to html --ExecutePreprocessor.kernel_name=$IPYTHON_KERNEL
 notifications:
   email: true
