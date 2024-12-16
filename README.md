@@ -22,7 +22,7 @@ The challenge in this RAMP is to design an algorithm to automatically classify v
 ### Install
 
 To run a submission and the notebook you will need the dependencies listed
-in `requirements.txt`. You can install install the dependencies with the
+in `requirements.txt`. You can install the dependencies with the
 following command-line:
 
 ```bash
