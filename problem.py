@@ -43,7 +43,7 @@ def _read_data(path, df_filename, vf_filename):
     X_dict = df.drop(_target_column_name, axis=1).to_dict(orient='records')
     vf_raw = pd.read_csv(os.path.join(path, 'data', vf_filename),
                          index_col=0, compression='gzip')
-    vf_dict = vf_raw.applymap(csv_array_to_float).to_dict(orient='records')
+    vf_dict = vf_raw.map(csv_array_to_float).to_dict(orient='records')
     X_dict = [merge_two_dicts(d_inst, v_inst) for d_inst, v_inst
               in zip(X_dict, vf_dict)]
     return pd.DataFrame(X_dict), y_array
